@@ -1,6 +1,6 @@
-const apiKey = process.env.API_KEY;
+const apiKey = `ebcf5c408d8052c002cc7ab66e830c85`;
 
-const getMoviesUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=1`;
+const getMoviesUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=pt-BR&page=1`;
 const searchButton = document.querySelector('.search')
 const input = document.querySelector('input')
 const moviesContainer = document.querySelector('.main-container')
