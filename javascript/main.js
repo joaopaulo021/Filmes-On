@@ -1,4 +1,4 @@
-import { apiKey } from "./key.js"
+const apiKey = process.env.API_KEY;
 
 const getMoviesUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=1`;
 const searchButton = document.querySelector('.search')
@@ -7,7 +7,7 @@ const moviesContainer = document.querySelector('.main-container')
 const checkboxInput = document.querySelector('input[type="checkbox"]')
 
 
-const getMovies = async() => {
+const getMovies = async () => {
     const fetchResponse = await fetch(getMoviesUrl)
     const { results } = await fetchResponse.json()
     return results
@@ -16,7 +16,7 @@ const getMovies = async() => {
 }
 
 // FUNÇÃO PROCURAR O FILME 
-const searchMovie = async() => {
+const searchMovie = async () => {
     const inputValue = input.value
     if (inputValue != '') {
         cleanAllMovies()
@@ -38,13 +38,13 @@ const cleanAllMovies = () => {
     moviesContainer.innerHTML = ''
 }
 
-const searchMovieByName = async(title) => {
+const searchMovieByName = async (title) => {
     const url = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&l&query=${title}&language=en-US&page=1`
     const fetchResponse = await fetch(url)
     const { results } = await fetchResponse.json()
     return results
 }
-const getPopularMovies = async(title) => {
+const getPopularMovies = async (title) => {
     const url = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&l&query=${title}&language=en-US&page=1`
     const fetchResponse = await fetch(url)
     const { results } = await fetchResponse.json()
@@ -94,7 +94,7 @@ function removeFromLocalStorage(id) {
 
 checkboxInput.addEventListener('change', checkCheckboxStatus)
 searchButton.addEventListener('click', searchMovie)
-input.addEventListener('keyup', function(event) {
+input.addEventListener('keyup', function (event) {
     console.log(event.key)
     if (event.keycode == 13) {
         searchMovie()
@@ -121,7 +121,7 @@ async function getAllmovies() {
 }
 
 
-window.onload = function() {
+window.onload = function () {
     getAllmovies()
 }
 
